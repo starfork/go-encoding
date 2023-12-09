@@ -10,7 +10,6 @@ var base32Bytes = []byte("123456789abcdefghijklmnopqrstuvwxyz")
 func Base35Encode(input string) ([]byte, string) {
 	x := big.NewInt(0).SetBytes([]byte(input))
 	base := big.NewInt(35)
-	//fmt.Println(base)
 	zero := big.NewInt(0)
 	mod := &big.Int{}
 	var result []byte
@@ -18,7 +17,6 @@ func Base35Encode(input string) ([]byte, string) {
 	for x.Cmp(zero) != 0 {
 		x.DivMod(x, base, mod)
 		result = append(result, base32Bytes[mod.Int64()])
-		//fmt.Println(result)
 	}
 	ReverseBytes(result)
 	return result, string(result)
